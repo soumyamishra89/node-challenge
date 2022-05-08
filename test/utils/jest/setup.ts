@@ -17,12 +17,7 @@ export async function insertData() {
   await query('INSERT INTO users(id, first_name, last_name, company_name, ssn, user_name, password) VALUES(\'3d16547a-79f6-4f62-9034-d3bfb31fb37c\',\'olov\', \'eriksson\',\'pleo\',3,\'olov_eriksson\',\'XohImNooBHFR0OVvjcYpJ3NgPQ1qq73WKhHvch0VQtg=\')');
 }
 
-export async function dropTable() {
-  await query('DROP TABLE public.expenses');
-  await query('DROP TABLE public.users');
-}
-
-export async function setupData() {
+export default async function setupData() {
   await createTable();
   await insertData();
 }

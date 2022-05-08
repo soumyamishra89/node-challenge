@@ -30,5 +30,7 @@ module.exports = {
     '<rootDir>/test/utils/jest/config-injector.ts',
     '<rootDir>/test/utils/jest/error-matchers.ts',
   ],
+  globalSetup: '<rootDir>/test/utils/jest/setup.ts',
+  globalTeardown: '<rootDir>/test/utils/jest/teardown.ts',
   testEnvironment: 'node',
 };
