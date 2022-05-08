@@ -25,5 +25,5 @@ router.post('/login', async (req, res, next) => {
     await updateAuthToken(userDetails.id, userDetails.auth_token);
   }
 
-  return res.json(formatAuthToken(userDetails));
+  return res.json(JSON.parse(formatAuthToken(userDetails)));
 });

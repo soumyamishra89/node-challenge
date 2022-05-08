@@ -3,11 +3,13 @@ import { getUserDetails } from '../model';
 import { Router } from 'express';
 import { secureTrim } from '../formatter';
 import { to } from '@nc/utils/async';
+import { UserDetails } from '../types';
 
 export const router = Router();
 
 router.get('/get-user-details', async (req, res, next) => {
-  const [userError, userDetails] = await to(getUserDetails(req.query?.userId));
+  const user = req.user as UserDetails;
+  const [userError, userDetails] = await to(getUserDetails(user.id));
 
   if (userError) {
     return next(new ApiError(userError, userError.status, `Could not get user details: ${userError}`, userError.title, req));
@@ -17,5 +19,5 @@ router.get('/get-user-details', async (req, res, next) => {
     return res.json({});
   }
 
-  return res.json(secureTrim(userDetails));
+  return res.json(JSON.parse(secureTrim(userDetails)));
 });

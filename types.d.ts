@@ -18,9 +18,22 @@ interface ConfigDefinition {
         appKill: number
         serverClose: number
     }
+    i18next: any
+    rateLimiting: {
+        windowMs: number
+        max: number
+        standardHeaders: boolean
+        legacyHeaders: boolean
+    }
 }
 
 declare module 'config' {
     const config: ConfigDefinition; // eslint-disable-line vars-on-top
     export default config;
 }
+
+declare namespace Express {
+    export interface Request {
+       user?: unknown
+    }
+ }
