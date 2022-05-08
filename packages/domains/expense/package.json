@@ -1,7 +1,11 @@
 {
-    "name": "@nc/domain-expense",
-    "version": "0.0.0",
-    "description": "Expenses domain logic",
-    "private": true,
-    "dependencies": {}
+  "name": "@nc/domain-expense",
+  "version": "0.0.0",
+  "description": "Expenses domain logic",
+  "private": true,
+  "dependencies": {
+    "@nc/domain-user": "0.0.0",
+    "@nc/utils": "0.0.0",
+    "express": "^4.17.0"
   }
+}

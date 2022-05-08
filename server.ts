@@ -1,5 +1,6 @@
 import config from 'config';
 import context from './middleware/context';
+import { router as expenseRoutes } from '@nc/domain-expense';
 import express from 'express';
 import gracefulShutdown from '@nc/utils/graceful-shutdown';
 import helmet from 'helmet';
@@ -36,12 +37,14 @@ app.use(context);
 app.use(security);
 
 app.use('/users', userRoutes);
+app.use('/expenses', expenseRoutes);
 
 app.use(function(req, res) {
   res.status(404).json({ error: 'No route' });
 });
 
-server.listen(config.port, () => {
+// for testing randomly assign to any port available
+server.listen(process.env.NODE_ENV !== 'qa' ? config.port : 0, () => {
   ready = true;
   logger.log(`Server started on port ${config.port}`);
 });
