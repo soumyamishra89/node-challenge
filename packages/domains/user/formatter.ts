@@ -1,10 +1,14 @@
 import { capitalize } from '@nc/utils/formatter';
 import { UserDetails } from './types';
 
-const publicFields = ['first_name', 'last_name', 'company_name', 'auth_token'];
+const publicFields = ['first_name', 'last_name', 'company_name'];
 
 export function secureTrim(user: UserDetails): string {
   return JSON.stringify(user, publicFields);
+}
+
+export function formatAuthToken(user: UserDetails): string {
+  return JSON.stringify(user, ['auth_token']);
 }
 
 export function format(rawUser): UserDetails {

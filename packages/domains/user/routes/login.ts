@@ -1,7 +1,6 @@
 import { ApiError } from '@nc/utils/errors';
-
+import { formatAuthToken } from '../formatter';
 import { Router } from 'express';
-import { secureTrim } from '../formatter';
 import { to } from '@nc/utils/async';
 import { generateRandomToken, hash } from '@nc/utils/crypto';
 import { getUserDetailsByUserNamePassword, updateAuthToken } from '../model';
@@ -26,5 +25,5 @@ router.post('/login', async (req, res, next) => {
     await updateAuthToken(userDetails.id, userDetails.auth_token);
   }
 
-  return res.json(secureTrim(userDetails));
+  return res.json(formatAuthToken(userDetails));
 });
