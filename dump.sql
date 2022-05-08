@@ -46,7 +46,10 @@ CREATE TABLE public.users (
     first_name character varying(100),
     last_name character varying(100),
     company_name character varying(255),
-    ssn character varying(32)
+    ssn character varying(32),
+    user_name character varying(20),
+    password character varying(64),
+    auth_token character varying(64)
 );
 
 
@@ -70,10 +73,10 @@ f3f34c29-274a-414d-988f-711802eeac25	BRUS	5000	DKK	3d16547a-79f6-4f62-9034-d3bfb
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.users (id, first_name, last_name, company_name, ssn) FROM stdin;
-da140a29-ae80-4f0e-a62d-6c2d2bc8a474	jeppe	rindom	pleo	1
-e17825a6-ad80-41bb-a76b-c5ee17b2f29d	petr	janda	pleo	2
-3d16547a-79f6-4f62-9034-d3bfb31fb37c	olov	eriksson	pleo	3
+COPY public.users (id, first_name, last_name, company_name, ssn, user_name, password) FROM stdin;
+da140a29-ae80-4f0e-a62d-6c2d2bc8a474	jeppe	rindom	pleo	1	jeppe_rindom	XohImNooBHFR0OVvjcYpJ3NgPQ1qq73WKhHvch0VQtg=
+e17825a6-ad80-41bb-a76b-c5ee17b2f29d	petr	janda	pleo	2	petr_janda	XohImNooBHFR0OVvjcYpJ3NgPQ1qq73WKhHvch0VQtg=
+3d16547a-79f6-4f62-9034-d3bfb31fb37c	olov	eriksson	pleo	3	olov_eriksson	XohImNooBHFR0OVvjcYpJ3NgPQ1qq73WKhHvch0VQtg=
 \.
 
 
