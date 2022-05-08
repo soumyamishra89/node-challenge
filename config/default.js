@@ -11,7 +11,11 @@ module.exports = {
     stackSize: 4,
   },
   i18next: {
-    translationFilePath: path.resolve(__dirname, '..', 'locales/{{lng}}/{{ns}}.json'),
+    translationFilePath: path.resolve(
+      __dirname,
+      '..',
+      'locales/{{lng}}/{{ns}}.json'
+    ),
   },
   host: 'localhost:9001',
   https: {
@@ -21,5 +25,11 @@ module.exports = {
   shutdown: {
     appKill: 1000,
     serverClose: 100,
+  },
+  rateLimiting: {
+    windowMs: 10 * 60 * 1000, // 10mins
+    max: 100, // 100 requests per 100 mins
+    standardHeaders: true,
+    legacyHeaders: false,
   },
 };

@@ -5,6 +5,7 @@ import express from 'express';
 import gracefulShutdown from '@nc/utils/graceful-shutdown';
 import helmet from 'helmet';
 import Logger from '@nc/utils/logging';
+import rateLimit from 'express-rate-limit';
 import security from './middleware/security';
 import { router as userRoutes } from '@nc/domain-user';
 import { createServer as createHTTPServer, Server } from 'http';
@@ -35,6 +36,7 @@ app.get('/healthcheck', function healthcheckEndpoint(req, res) {
 
 app.use(context);
 app.use(security);
+app.use(rateLimit(config.rateLimiting));
 
 app.use('/users', userRoutes);
 app.use('/expenses', expenseRoutes);
